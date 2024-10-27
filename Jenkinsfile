@@ -19,7 +19,6 @@ node {
     }
 
     stage('Deploy to Kubernetes') {
-        steps {
         withCredentials([file(credentialsId: 'kubeconfig-credentials-id', variable: 'KUBECONFIG')]) {
             sh 'kubectl apply -f deployment.yaml --kubeconfig $KUBECONFIG'
         }
